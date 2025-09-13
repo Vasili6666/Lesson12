@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class SimpleJUniteTest {
 
@@ -26,19 +27,24 @@ public class SimpleJUniteTest {
 
     @Test
     void fillFormTest() {
-        open("/automation-practice-form");
 
-        // Удаляем мешающие элементы
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        step("Открываем главную страницу  и убираем баннеры", () -> {
+            open("/automation-practice-form");
+            // Удаляем мешающие элементы
+            executeJavaScript("$('#fixedban').remove()");
+            executeJavaScript("$('footer').remove()");
 
+        });
+
+
+
+        step("Заполнение формы", () -> {
         // Заполнение формы
         $("#firstName").setValue("Basil");
         $("#lastName").setValue("Pupkin");
         $("#userEmail").setValue("pupkin@basil.com");
         $$("#genterWrapper label").filterBy(text("Male")).first().click();
         $("#userNumber").setValue("0441234567");
-
         // Дата рождения
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("February");
@@ -68,6 +74,10 @@ public class SimpleJUniteTest {
 
         // Submit
         $("#submit").scrollTo().click();
+        });
+
+
+        step("Проверка заполненной таблицы", () -> {
 
         // Проверки (раздельные для каждого поля)
         $(".modal-content").shouldBe(visible);
@@ -94,7 +104,12 @@ public class SimpleJUniteTest {
         $(".table-responsive")
                 .$(byText("State and City")).parent().shouldHave(text("Haryana Karnal"));
 
-        // Закрытие модального окна
+        });
+
+        step("Закрытие окна", () -> {
+            // Закрытие модального окна
         $("#closeLargeModal").click();
+
+        });
     }
 }
