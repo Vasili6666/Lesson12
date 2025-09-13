@@ -8,7 +8,7 @@ repositories {
 }
 
 def allureVersion = "2.21.0",
-    selenideVersion = "6.19.1"
+    selenideVersion = "7.0.0"
 
 allure {
     report {
@@ -29,8 +29,11 @@ dependencies {
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
             "org.junit.jupiter:junit-jupiter:5.10.0",
+            'com.github.javafaker:javafaker:1.0.2',
             'org.slf4j:slf4j-simple:2.0.7'
     )
+    implementation 'org.aspectj:aspectjweaver:1.9.20'
+    implementation 'org.aspectj:aspectjrt:1.9.20'
 }
 
 tasks.withType(Test) {
@@ -44,13 +47,7 @@ tasks.withType(Test) {
     }
 }
 
-task simple_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("simple")
-    }
-}
-
-task demoqa_test(type: Test) {
+tasks.register('demoqa_test', Test) {
     useJUnitPlatform {
         includeTags("demoqa")
     }
