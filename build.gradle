@@ -7,22 +7,23 @@ repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.21.0",
+def allureVersion = "2.19.0",
     selenideVersion = "7.0.0"
 
 allure {
     report {
         version.set(allureVersion)
     }
-    adapter {
-        aspectjWeaver.set(true)
+    adapter {// отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true)//обработка аннотации @Step
         frameworks {
-            junit5 {
-                adapterVersion.set(allureVersion)
+            junit5 {//название фреймворка
+                adapterVersion.set(allureVersion)версия интеграции фреймворка и Allure
             }
         }
     }
 }
+
 
 dependencies {
     testImplementation(
