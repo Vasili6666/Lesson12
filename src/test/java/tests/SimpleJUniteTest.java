@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
@@ -26,6 +27,7 @@ public class SimpleJUniteTest {
     }
 
     @Test
+    @Tag("demoqa")
     void fillFormTest() {
 
         step("Открываем главную страницу  и убираем баннеры", () -> {
