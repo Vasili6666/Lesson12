@@ -37,7 +37,7 @@ dependencies {
     implementation 'org.aspectj:aspectjrt:1.9.20'
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     useJUnitPlatform()
 
     testLogging {
