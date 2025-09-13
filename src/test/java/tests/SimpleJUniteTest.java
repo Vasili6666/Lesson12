@@ -16,7 +16,7 @@ public class SimpleJUniteTest {
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
+        //Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 5000;
     }
@@ -31,7 +31,7 @@ public class SimpleJUniteTest {
     void fillFormTest() {
 
         step("Открываем главную страницу  и убираем баннеры", () -> {
-            open("/automation-practice-form");
+            open("https://demoqa.com/automation-practice-form");
             // Удаляем мешающие элементы
             executeJavaScript("$('#fixedban').remove()");
             executeJavaScript("$('footer').remove()");
