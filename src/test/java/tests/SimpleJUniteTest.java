@@ -55,7 +55,7 @@ public class SimpleJUniteTest {
             // Удаляем мешающие элементы
             executeJavaScript("$('#fixedban').remove()");
             executeJavaScript("$('footer').remove()");
-            executeJavaScript("window.onloadCallback = function() { console.log('Fake reCAPTCHA onloadCallback called'); };");
+            // executeJavaScript("window.onloadCallback = function() { console.log('Fake reCAPTCHA onloadCallback called'); };");
 
         });
 
