@@ -129,10 +129,10 @@ public class SimpleJUniteTest {
 
         });
 
-        /*step("Закрытие окна", () -> {
+        step("Закрытие окна", () -> {
             // Закрытие модального окна
         $("#closeLargeModal").click();
 
-        });*/
+        });
     }
 }
