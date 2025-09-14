@@ -28,7 +28,7 @@ public class SimpleJUniteTest {
                 "enableVNC", true,
                 "enableVideo", true
         ));
-
+        Configuration.browserCapabilities = capabilities;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
