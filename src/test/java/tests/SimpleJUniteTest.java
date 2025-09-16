@@ -24,18 +24,20 @@ public class SimpleJUniteTest {
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");;
         Configuration.browserVersion = System.getProperty("version", "101");
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.baseUrl = System.getProperty("url", "chrome");
+        Configuration.baseUrl = System.getProperty("url", "https://demoqa.com");
         Configuration.remote = "https://user1:1234@" + REMOTE_DRIVER_URL +"/wd/hub";
 
 
         Configuration.timeout = 5000;
         Configuration.pageLoadStrategy = "eager";
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
