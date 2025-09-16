@@ -63,6 +63,8 @@ public class TestBase {
         }
 
         SelenideLogger.addListener("allure", new AllureSelenide());
+        System.out.println("Using remote WebDriver URL: " + Configuration.remote);
+
     }
 
     @AfterEach
