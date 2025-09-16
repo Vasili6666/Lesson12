@@ -13,33 +13,19 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
+import static tests.TestBase.REMOTE_DRIVER_URL;
+
 @Tag("demoqa")
 public class SimpleJUniteTest {
-    public static String remoteDriverUrl = System.getProperty("remoteDriverUrl");
-
 
     @BeforeAll
     static void beforeAll() {
 
-
-
-       /* String browser = System.getProperty("browser", "chrome");
-        String version = System.getProperty("version", "101");
-        String windowSize = System.getProperty("windowSize", "1920x1080");
-          public static String baseUrl = defaults.baseUrl();
-          public static String browserVersion = defaults.browserVersion();
-        */
-
-
-        /*Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-*/
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");;
         Configuration.browserVersion = System.getProperty("version", "101");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.baseUrl = System.getProperty("url", "chrome");
-        Configuration.remote = "https://user1:1234@" + remoteDriverUrl +"/wd/hub";
+        Configuration.remote = "https://user1:1234@" + REMOTE_DRIVER_URL +"/wd/hub";
 
 
         Configuration.timeout = 5000;
