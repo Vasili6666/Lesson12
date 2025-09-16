@@ -13,6 +13,7 @@ import java.util.Objects;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
+import static tests.SimpleJUniteTest.remoteDriverUrl;
 
 public class Attach {
 
@@ -43,7 +44,7 @@ public class Attach {
     }
 
     public static URL getVideoUrl(String sessionId) {
-        String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId + ".mp4";
+        String videoUrl = "https://"+ remoteDriverUrl + "0/video/" + sessionId + ".mp4";
         try {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {
