@@ -19,6 +19,8 @@ public class TestBase {
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
         Configuration.timeout = Integer.parseInt(System.getProperty("timeout", "5000"));
         Configuration.pageLoadStrategy = "eager";
+
+
         Configuration.remote = System.getProperty("remoteDriverUrl");
 
 
@@ -30,6 +32,8 @@ public class TestBase {
         Configuration.browserCapabilities = capabilities;
 
         SelenideLogger.addListener("allure", new AllureSelenide());
+        System.out.println(">>> remoteDriverUrl = " + System.getProperty("remoteDriverUrl"));
+
 
     }
 }
