@@ -58,13 +58,11 @@ public class TestBase {
     // -----------------------------
     @AfterEach
     void addAttachments() {
-        // ДОБАВЛЕНО: вызываем helper для прикрепления скриншотов и логов
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
 
-        // ДОБАВЛЕНО: добавляем видео из Selenoid в Allure
-        // Формируем ссылку по sessionId
+        // создаём переменную videoUrl
         String sessionId = Selenide.sessionId().toString();
         String remoteUrl = System.getProperty("REMOTE_DRIVER_URL", "selenoid.autotests.cloud");
         String videoUrl = String.format("https://%s/video/%s.mp4", remoteUrl, sessionId);
