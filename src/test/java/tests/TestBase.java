@@ -6,7 +6,6 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
-
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -30,13 +29,12 @@ public class TestBase {
         // -----------------------------
         // Remote WebDriver (Selenoid)
         // -----------------------------
-        // ИЗМЕНЕНИЕ: берем полный URL из Jenkins через -DremoteDriverUrl
+        // Берем URL удаленного драйвера из Jenkins через -DremoteDriverUrl
         Configuration.remote = System.getProperty("remoteDriverUrl");
 
         // -----------------------------
         // Capabilities для видео и VNC
         // -----------------------------
-        // ДОБАВЛЕНО: чтобы Selenoid записывал видео и включал VNC
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.of(
                 "enableVNC", true,
@@ -49,7 +47,7 @@ public class TestBase {
         // -----------------------------
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        // Для отладки, чтобы видеть какой remote используется
+        // Для отладки: показываем какой remote используется
         System.out.println("Remote WebDriver URL: " + Configuration.remote);
     }
 
@@ -62,7 +60,7 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
 
-        // создаём переменную videoUrl
+        // Создаём videoUrl для прикрепления видео в Allure
         String sessionId = Selenide.sessionId().toString();
         String remoteUrl = System.getProperty("REMOTE_DRIVER_URL", "selenoid.autotests.cloud");
         String videoUrl = String.format("https://%s/video/%s.mp4", remoteUrl, sessionId);
@@ -78,48 +76,3 @@ public class TestBase {
         closeWebDriver();
     }
 }
-
-
-
-
-/*
-package tests;
-
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.util.Map;
-
-public class TestBase {
-
-    @BeforeAll
-    static void beforeAll() {
-
-        Configuration.baseUrl = System.getProperty("url", "https://demoqa.com");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("version", "114.0");
-        Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
-        Configuration.timeout = Integer.parseInt(System.getProperty("timeout", "5000"));
-        Configuration.pageLoadStrategy = "eager";
-
-
-        Configuration.remote = System.getProperty("remoteDriverUrl");
-
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
-
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
-
-
-    }
-}
-*/
