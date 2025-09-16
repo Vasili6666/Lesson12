@@ -13,29 +13,32 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
-import static tests.TestBase.REMOTE_DRIVER_URL;
+import static tests.TestBase.*;
 
 @Tag("demoqa")
 public class SimpleJUniteTest {
+/*
 
     @BeforeAll
     static void beforeAll() {
 
-        Configuration.browserSize = System.getProperty("windowSize", "1920x1080");;
-        Configuration.browserVersion = System.getProperty("version", "101");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.baseUrl = System.getProperty("url", "chrome");
+        Configuration.browserSize = BROWSER_SIZE;;
+        Configuration.browserVersion = BROWSER_VERSION;
+        Configuration.browser = BROWSER;
+        Configuration.baseUrl = BASE_URL;
         Configuration.remote = "https://user1:1234@" + REMOTE_DRIVER_URL +"/wd/hub";
 
 
-        Configuration.timeout = 5000;
+        Configuration.timeout = TIMEOUT;
         Configuration.pageLoadStrategy = "eager";
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
@@ -52,9 +55,9 @@ public class SimpleJUniteTest {
     static void afterAll() {
         closeWebDriver();
     }
+*/
 
     @Test
-
     void fillFormTest() {
 
         step("Открываем главную страницу  и убираем баннеры", () -> {
