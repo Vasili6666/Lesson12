@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
-import static tests.TestBase.REMOTE_DRIVER_URL;
+import static tests.TestBase.*;
 
 @Tag("demoqa")
 public class SimpleJUniteTest {
@@ -55,7 +55,6 @@ public class SimpleJUniteTest {
     }
 
     @Test
-
     void fillFormTest() {
 
         step("Открываем главную страницу  и убираем баннеры", () -> {
