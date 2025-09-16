@@ -17,6 +17,7 @@ import static tests.TestBase.REMOTE_DRIVER_URL;
 
 @Tag("demoqa")
 public class SimpleJUniteTest {
+   //public String remoteDriverUrl =System.getProperty("")
 
     @BeforeAll
     static void beforeAll() {
@@ -25,7 +26,7 @@ public class SimpleJUniteTest {
         Configuration.browserVersion = System.getProperty("version", "101");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.baseUrl = System.getProperty("url", "chrome");
-        Configuration.remote = "https://user1:1234@" + REMOTE_DRIVER_URL +"/wd/hub";
+        Configuration.remote = "https://user1:1234@" + System.getProperty("remoteDriverUrl", "selenoid.autotests.cloud") +"/wd/hub";
 
 
         Configuration.timeout = 5000;
