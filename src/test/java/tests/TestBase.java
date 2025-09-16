@@ -12,18 +12,16 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        // Основные настройки браузера
+
         Configuration.baseUrl = System.getProperty("url", "https://demoqa.com");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("version", "114.0");
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
         Configuration.timeout = Integer.parseInt(System.getProperty("timeout", "5000"));
         Configuration.pageLoadStrategy = "eager";
-
-        // Адрес удалённого браузера (selenoid) передаётся из Jenkins
         Configuration.remote = System.getProperty("remoteDriverUrl");
 
-        // Настройки для selenoid
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.of(
                 "enableVNC", true,
@@ -31,10 +29,7 @@ public class TestBase {
         ));
         Configuration.browserCapabilities = capabilities;
 
-        // Подключение Allure listener
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        // Для отладки
-        System.out.println("Remote WebDriver URL: " + Configuration.remote);
     }
 }
