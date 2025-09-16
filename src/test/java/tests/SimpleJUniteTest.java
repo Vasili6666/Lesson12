@@ -17,6 +17,7 @@ import static tests.TestBase.*;
 
 @Tag("demoqa")
 public class SimpleJUniteTest {
+/*
 
     @BeforeAll
     static void beforeAll() {
@@ -54,9 +55,9 @@ public class SimpleJUniteTest {
     static void afterAll() {
         closeWebDriver();
     }
+*/
 
     @Test
-
     void fillFormTest() {
 
         step("Открываем главную страницу  и убираем баннеры", () -> {
