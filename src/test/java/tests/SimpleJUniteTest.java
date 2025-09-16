@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
-import static tests.TestBase.REMOTE_DRIVER_URL;
+import static tests.TestBase.*;
 
 @Tag("demoqa")
 public class SimpleJUniteTest {
@@ -21,14 +21,14 @@ public class SimpleJUniteTest {
     @BeforeAll
     static void beforeAll() {
 
-        Configuration.browserSize = System.getProperty("windowSize", "1920x1080");;
-        Configuration.browserVersion = System.getProperty("version", "101");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.baseUrl = System.getProperty("url", "https://demoqa.com");
+        Configuration.browserSize = BROWSER_SIZE;;
+        Configuration.browserVersion = BROWSER_VERSION;
+        Configuration.browser = BROWSER;
+        Configuration.baseUrl = BASE_URL;
         Configuration.remote = "https://user1:1234@" + REMOTE_DRIVER_URL +"/wd/hub";
 
 
-        Configuration.timeout = 5000;
+        Configuration.timeout = TIMEOUT;
         Configuration.pageLoadStrategy = "eager";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
