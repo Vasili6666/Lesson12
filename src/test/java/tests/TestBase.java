@@ -27,8 +27,9 @@ public class TestBase {
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
         Configuration.timeout = Integer.parseInt(System.getProperty("timeout", "5000"));
         Configuration.pageLoadStrategy = "eager";
+        Configuration.remote= System.getProperty("remoteDriverUrl");
 
-        REMOTE_DRIVER_URL = System.getProperty("remoteDriverUrl", "selenoid.autotests.cloud");
+       // REMOTE_DRIVER_URL = System.getProperty("remoteDriverUrl", "selenoid.autotests.cloud");
 
         if (!REMOTE_DRIVER_URL.isEmpty()) {
             Configuration.remote = String.format(
