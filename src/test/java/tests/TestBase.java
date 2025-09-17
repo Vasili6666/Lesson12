@@ -55,7 +55,7 @@ public class TestBase {
     // Добавление скриншотов, логов и видео после каждого теста
     // -----------------------------
 
-    @AfterEach
+   /* @AfterEach
     void addAttachments() {
         // Создаём videoUrl для прикрепления видео в Allure
         String sessionId = Selenide.sessionId().toString();
@@ -67,8 +67,19 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo(videoUrl);
-    }
+    }*/
 
+    @AfterEach
+    void addAttachments() {
+        String sessionId = Selenide.sessionId().toString();
+        String remoteUrl = System.getProperty("videoHost", "selenoid.autotests.cloud");
+        String videoUrl = String.format("https://%s/video/%s.mp4", remoteUrl, sessionId);
+
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo(videoUrl);  // передаем ссылку сюда
+    }
 
 
 
