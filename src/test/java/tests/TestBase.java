@@ -59,7 +59,7 @@ public class TestBase {
     void addAttachments() {
         // Создаём videoUrl для прикрепления видео в Allure
         String sessionId = Selenide.sessionId().toString();
-        String remoteUrl = System.getProperty("videoHost", "selenoid.autotests.cloud");
+        String remoteUrl =  "selenoid.autotests.cloud";                 //System.getProperty("videoHost", "selenoid.autotests.cloud");
         String videoUrl = String.format("https://%s/video/%s.mp4", remoteUrl, sessionId);
 
 
@@ -82,3 +82,4 @@ public class TestBase {
         closeWebDriver();
     }
 }
+//##-DvideoHost=user1:1234@${REMOTE_DRIVER_URL}
