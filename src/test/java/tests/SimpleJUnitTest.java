@@ -1,6 +1,6 @@
 package tests;
 
-import helpers.Attach;
+
 import org.junit.jupiter.api.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -10,20 +10,7 @@ import static io.qameta.allure.Allure.step;
 @Tag("demoqa")
 public class SimpleJUnitTest extends TestBase {
 
-   /* @AfterEach
-    void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo(videoUrl);
-    }*/
-
-    /*@AfterAll
-    static void afterAll() {
-        closeWebDriver();
-    }*/
-
-    @Test
+   @Test
     void fillFormTest() {
 
         step("Открываем главную страницу и убираем баннеры", () -> {
