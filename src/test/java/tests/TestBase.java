@@ -16,9 +16,7 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        // -----------------------------
-        // Основные настройки браузера
-        // -----------------------------
+
         Configuration.baseUrl = System.getProperty("url", "https://demoqa.com");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("version", "114.0");
@@ -26,15 +24,8 @@ public class TestBase {
         Configuration.timeout = Integer.parseInt(System.getProperty("timeout", "5000"));
         Configuration.pageLoadStrategy = "eager";
 
-        // -----------------------------
-        // Remote WebDriver (Selenoid)
-        // -----------------------------
-        // Берем URL удаленного драйвера из Jenkins через -DremoteDriverUrl
         Configuration.remote = System.getProperty("remoteDriverUrl");
 
-        // -----------------------------
-        // Capabilities для видео и VNC
-        // -----------------------------
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.of(
                 "enableVNC", true,
@@ -42,32 +33,9 @@ public class TestBase {
         ));
         Configuration.browserCapabilities = capabilities;
 
-        // -----------------------------
-        // Allure Listener
-        // -----------------------------
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        // Для отладки: показываем какой remote используется
-        System.out.println("Remote WebDriver URL: " + Configuration.remote);
     }
-
-    // -----------------------------
-    // Добавление скриншотов, логов и видео после каждого теста
-    // -----------------------------
-
-   /* @AfterEach
-    void addAttachments() {
-        // Создаём videoUrl для прикрепления видео в Allure
-        String sessionId = Selenide.sessionId().toString();
-        String remoteUrl =  "selenoid.autotests.cloud";                 //System.getProperty("videoHost", "selenoid.autotests.cloud");
-        String videoUrl = String.format("https://%s/video/%s.mp4", remoteUrl, sessionId);
-
-
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo(videoUrl);
-    }*/
 
     @AfterEach
     void addAttachments() {
@@ -81,16 +49,8 @@ public class TestBase {
         Attach.addVideo(videoUrl);  // передаем ссылку сюда
     }
 
-
-
-
-
-    // -----------------------------
-    // Закрытие браузера после всех тестов
-    // -----------------------------
     @AfterAll
     static void afterAll() {
         closeWebDriver();
     }
 }
-//##-DvideoHost=user1:1234@${REMOTE_DRIVER_URL}
