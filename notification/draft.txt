@@ -1,0 +1,16 @@
+7843277659:AAGAglKAVY85fnTj7YtD46Xah6BUL2ZZCsI
+
+https://api.telegram.org/bot7843277659:AAGAglKAVY85fnTj7YtD46Xah6BUL2ZZCsI/getUpdates
+
+-4934388560
+
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-4934388560", "text": "This is a test from qa_guru", "disable_notification": true}' https://api.telegram.org/bot$7843277659:AAGAglKAVY85fnTj7YtD46Xah6BUL2ZZCsI/sendMessage
+
+рабочая альтернатива
+ Invoke-WebRequest -Uri "https://api.telegram.org/bot7843277659:AAGAglKAVY85fnTj7YtD46Xah6BUL2ZZCsI/sendMessage" `
+>>   -Method Post `
+>>   -Headers @{ "Content-Type" = "application/json" } `
+>>   -Body '{"chat_id": "-4934388560", "text": "This is a test from qa_guru", "disable_notification": true}'
+
+
+java "-DconfigFile=notification/config.json" -jar ./notification/allure-notifications-4.6.1.jar  // запуск через коммандную строку в телегу графики и отчет

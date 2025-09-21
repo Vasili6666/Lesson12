@@ -1,0 +1,17 @@
+{
+  "base": {
+    "project": "My project Vas",
+    "environment": "qa.guru",
+    "comment": "coment here @iterkin",
+    "reportLink": "https://jenkins.autotests.cloud/job/VPlatonov-Lesson11-demoqa/57/",
+    "language": "en",
+    "messenger": "telegram",
+    "allureFolder": "allure-report",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "7843277659:AAGAglKAVY85fnTj7YtD46Xah6BUL2ZZCsI",
+    "chat": "-4934388560",
+    "replyTo": ""
+  }
+}
